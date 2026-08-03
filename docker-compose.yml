@@ -1,0 +1,15 @@
+services:
+  apo-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_LOGIN_URL: ${VITE_LOGIN_URL:-https://app.autopartspro.au/login}
+    hostname: apo-web
+    restart: unless-stopped
+    networks:
+      - pha-net
+
+networks:
+  pha-net:
+    external: true
