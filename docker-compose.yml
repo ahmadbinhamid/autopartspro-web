@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_LOGIN_URL: ${VITE_LOGIN_URL:-https://app.autopartspro.au/login}
+        VITE_API_URL: ${VITE_API_URL:-https://app.autopartspro.au/api/v1}
     hostname: autopartspro-web
     restart: unless-stopped
     networks:
