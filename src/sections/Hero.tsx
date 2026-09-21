@@ -1,7 +1,7 @@
 import { ArrowRight, Check } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { EbayLogo, GoogleMerchantLogo } from "@/components/marketing/MarketplaceLogos";
+import { AmazonLogo, EbayLogo, GoogleMerchantLogo, MetaLogo, ShopifyLogo } from "@/components/marketing/MarketplaceLogos";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { STATS } from "@/constants/stats";
 
@@ -20,24 +20,44 @@ export function Hero() {
       />
 
       {/* Floating channel chips — purely decorative, echoes the "every
-          marketplace" promise without needing a real dashboard screenshot. */}
+          marketplace" promise without needing a real dashboard screenshot.
+          Mirrored left/right at matching heights so the scatter reads as
+          a balanced frame around the headline rather than random clutter. */}
       <div
-        className="float pointer-events-none absolute top-36 left-[6%] hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm sm:flex"
+        className="float pointer-events-none absolute top-32 left-[6%] hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm sm:flex"
         aria-hidden="true"
       >
         <EbayLogo className="h-8 w-8" />
       </div>
       <div
-        className="float-delay pointer-events-none absolute top-56 right-[8%] hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm sm:flex"
+        className="float-delay pointer-events-none absolute top-32 right-[6%] hidden h-16 w-16 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm sm:flex"
         aria-hidden="true"
       >
         <GoogleMerchantLogo className="h-8 w-8" />
       </div>
       <div
-        className="float-delay-2 pointer-events-none absolute bottom-20 left-[12%] hidden h-12 w-12 items-center justify-center rounded-full bg-accent/15 sm:flex"
+        className="float-delay-2 pointer-events-none absolute top-72 left-[2%] hidden h-14 w-14 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm lg:flex"
+        aria-hidden="true"
+      >
+        <AmazonLogo className="h-7 w-7" />
+      </div>
+      <div
+        className="float pointer-events-none absolute top-72 right-[2%] hidden h-14 w-14 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm lg:flex"
+        aria-hidden="true"
+      >
+        <MetaLogo className="h-7 w-7" />
+      </div>
+      <div
+        className="float-delay pointer-events-none absolute top-[27rem] left-[10%] hidden h-12 w-12 items-center justify-center rounded-full bg-accent/15 sm:flex"
         aria-hidden="true"
       >
         <span className="h-2.5 w-2.5 rounded-full bg-ok" />
+      </div>
+      <div
+        className="float-delay-2 pointer-events-none absolute top-[27rem] right-[10%] hidden h-14 w-14 items-center justify-center rounded-2xl border border-border bg-bg/90 shadow-card backdrop-blur-sm lg:flex"
+        aria-hidden="true"
+      >
+        <ShopifyLogo className="h-7 w-7" />
       </div>
 
       <Container className="relative">

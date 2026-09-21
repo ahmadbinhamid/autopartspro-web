@@ -39,11 +39,11 @@ export function CtaBanner() {
                 <ArrowRight className="h-4.5 w-4.5" />
               </ButtonLink>
               <ButtonLink
-                href="#pricing"
+                href="#how-it-works"
                 size="lg"
                 className="w-full border border-white/15 bg-white/5 text-white hover:bg-white/10 sm:w-auto"
               >
-                View pricing
+                See how it works
               </ButtonLink>
             </div>
           </div>

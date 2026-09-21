@@ -1,5 +1,4 @@
 import { FAQ_ITEMS } from "@/constants/faq";
-import { PRICING_PLANS } from "@/constants/pricing";
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/constants/seo";
 
 // Structured data for Google (Organization + SoftwareApplication +
@@ -20,8 +19,6 @@ import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/constants/seo";
 // executes JS before reading structured data, so this reaches it the same
 // as a static tag would.
 export function SeoJsonLd() {
-  const numericPlans = PRICING_PLANS.filter((plan) => /^\$\d/.test(plan.price));
-
   const data = [
     {
       "@context": "https://schema.org",
@@ -39,13 +36,6 @@ export function SeoJsonLd() {
       operatingSystem: "Web",
       url: SITE_URL,
       description: SITE_DESCRIPTION,
-      offers: numericPlans.map((plan) => ({
-        "@type": "Offer",
-        name: plan.name,
-        price: plan.price.replace(/[^0-9.]/g, ""),
-        priceCurrency: "AUD",
-        description: plan.description,
-      })),
     },
     {
       "@context": "https://schema.org",
