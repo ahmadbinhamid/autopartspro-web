@@ -1,11 +1,11 @@
 export const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "FAQ", href: "/#faq" },
 ] as const;
 
-// Where "Sign in" goes — the dashboard app, a separate deployable this site
-// doesn't own the routes for. There's no public self-serve signup on that
-// app (its /register route is disabled), so every other CTA on this site
-// points at #demo (sections/RequestDemo.tsx) instead of here.
+// Root-relative so the CTA also works from /privacy and /terms.
+export const DEMO_HREF = "/#demo";
+
+// No self-serve signup on the dashboard, so other CTAs point at #demo instead.
 export const DASHBOARD_LOGIN_URL = "https://app.autopartspro.au/login";

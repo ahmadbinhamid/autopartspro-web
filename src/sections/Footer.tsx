@@ -1,14 +1,13 @@
 import { Logo } from "@/components/marketing/Logo";
 import { Container } from "@/components/ui/container";
 import { NAV_LINKS } from "@/constants/nav";
+import { PRIVACY_PATH, TERMS_PATH } from "@/constants/legal";
 
 const FOOTER_COLUMNS = [
   {
     title: "Product",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "How it works", href: "#how-it-works" },
-      { label: "FAQ", href: "#faq" },
+      ...NAV_LINKS,
     ],
   },
   {
@@ -16,8 +15,8 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "About", href: "#" },
       { label: "Contact", href: "#" },
-      { label: "Terms", href: "#" },
-      { label: "Privacy", href: "#" },
+      { label: "Terms of Service", href: TERMS_PATH },
+      { label: "Privacy Policy", href: PRIVACY_PATH },
     ],
   },
 ];

@@ -1,32 +1,23 @@
-import { SeoJsonLd } from "@/components/marketing/SeoJsonLd";
 import { Navbar } from "@/sections/Navbar";
-import { Hero } from "@/sections/Hero";
-import { LogosStrip } from "@/sections/LogosStrip";
-import { Features } from "@/sections/Features";
-import { HowItWorks } from "@/sections/HowItWorks";
-import { ProductShowcase } from "@/sections/ProductShowcase";
-import { Testimonials } from "@/sections/Testimonials";
-import { RequestDemo } from "@/sections/RequestDemo";
-import { Faq } from "@/sections/Faq";
-import { CtaBanner } from "@/sections/CtaBanner";
 import { Footer } from "@/sections/Footer";
+import { HomePage } from "@/pages/HomePage";
+import { PrivacyPolicyPage } from "@/pages/PrivacyPolicyPage";
+import { TermsPage } from "@/pages/TermsPage";
+import { PRIVACY_PATH, TERMS_PATH } from "@/constants/legal";
+
+// No router: links are full page loads and nginx falls back to index.html.
+function renderPage(pathname: string) {
+  const path = pathname.replace(/\/+$/, "") || "/";
+  if (path === PRIVACY_PATH) return <PrivacyPolicyPage />;
+  if (path === TERMS_PATH) return <TermsPage />;
+  return <HomePage />;
+}
 
 export default function App() {
   return (
     <>
-      <SeoJsonLd />
       <Navbar />
-      <main>
-        <Hero />
-        <LogosStrip />
-        <Features />
-        <HowItWorks />
-        <ProductShowcase />
-        <Testimonials />
-        <RequestDemo />
-        <Faq />
-        <CtaBanner />
-      </main>
+      <main>{renderPage(window.location.pathname)}</main>
       <Footer />
     </>
   );

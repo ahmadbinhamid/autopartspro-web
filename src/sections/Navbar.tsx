@@ -3,7 +3,7 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/marketing/Logo";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { NAV_LINKS, DASHBOARD_LOGIN_URL } from "@/constants/nav";
+import { NAV_LINKS, DASHBOARD_LOGIN_URL, DEMO_HREF } from "@/constants/nav";
 import { cn } from "@/lib/cn";
 
 export function Navbar() {
@@ -17,9 +17,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile sheet on Escape, and stop body scroll while it's open —
-  // it covers the full viewport, so background content shouldn't scroll
-  // underneath it.
+  // The sheet covers the viewport, so lock body scroll while it's open.
   useEffect(() => {
     if (!mobileOpen) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileOpen(false);
@@ -39,7 +37,7 @@ export function Navbar() {
       )}
     >
       <Container className="flex h-18 items-center justify-between">
-        <a href="#top" className="shrink-0">
+        <a href="/" className="shrink-0">
           <Logo />
         </a>
 
@@ -55,7 +53,7 @@ export function Navbar() {
           <ButtonLink href={DASHBOARD_LOGIN_URL} variant="ghost" size="sm">
             Sign in
           </ButtonLink>
-          <ButtonLink href="#demo" size="sm" className="shine">
+          <ButtonLink href={DEMO_HREF} size="sm" className="shine">
             Request a demo
           </ButtonLink>
         </div>
@@ -106,7 +104,7 @@ export function Navbar() {
           <ButtonLink href={DASHBOARD_LOGIN_URL} variant="secondary" size="lg" className="w-full justify-center">
             Sign in
           </ButtonLink>
-          <ButtonLink href="#demo" size="lg" className="w-full justify-center" onClick={() => setMobileOpen(false)}>
+          <ButtonLink href={DEMO_HREF} size="lg" className="w-full justify-center" onClick={() => setMobileOpen(false)}>
             Request a demo
           </ButtonLink>
         </div>
