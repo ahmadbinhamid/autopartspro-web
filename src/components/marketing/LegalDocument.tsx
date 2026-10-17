@@ -1,5 +1,6 @@
 // src/components/marketing/LegalDocument.tsx
 // Shared layout for long-form legal pages: header, contents list, sections.
+import { useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { LEGAL_CONTACT_EMAIL, LEGAL_LAST_UPDATED, type LegalDocumentContent } from "@/constants/legal";
@@ -7,6 +8,12 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 
 export function LegalDocument({ content }: { content: LegalDocumentContent }) {
   usePageMeta({ title: content.title, description: content.metaDescription, path: content.path });
+
+  // Sections render after load, so the browser's own jump to #anchor misses.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, []);
 
   return (
     <article className="pt-32 pb-24 sm:pt-40 sm:pb-32">

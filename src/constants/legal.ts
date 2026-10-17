@@ -2,10 +2,13 @@
 // Privacy Policy and Terms copy, rendered by LegalDocument.
 
 export const LEGAL_CONTACT_EMAIL = "admin.autopartspro@gmail.com";
-export const LEGAL_LAST_UPDATED = "11 October 2026";
+export const LEGAL_LAST_UPDATED = "17 October 2026";
 
 export const PRIVACY_PATH = "/privacy";
 export const TERMS_PATH = "/terms";
+// Meta's Data Deletion Instructions URL points at this privacy section.
+const DATA_DELETION_ANCHOR = "data-deletion";
+const DATA_DELETION_URL = `autopartspro.au${PRIVACY_PATH}#${DATA_DELETION_ANCHOR}`;
 
 export type LegalSection = {
   id: string;
@@ -43,8 +46,8 @@ export const PRIVACY_POLICY: LegalDocumentContent = {
         "Business and catalogue data you upload or import, such as products, part numbers, fitment data, images, pricing and stock levels.",
         "Order and customer data processed through your storefront and connected marketplaces, such as buyer names, shipping addresses, contact details and order history.",
         "Marketplace connection data, such as account identifiers and access tokens issued by eBay, Google or Meta when you connect those channels.",
-        "Billing information. Payments are processed by Stripe; we receive limited details such as the card brand, last four digits and billing status, but never store full card numbers.",
-        "Technical and usage data, such as IP address, browser type, device information, pages visited and actions taken in the dashboard, collected through server logs and essential cookies.",
+        "Payment information. Storefront and point-of-sale card payments are processed by Stripe through the seller's own Stripe account; we receive limited details such as the card brand, last four digits and payment status, and never see or store full card numbers.",
+        "Technical and usage data, such as IP address, browser type, device information, pages visited and actions taken in the dashboard, collected through server logs.",
       ],
     },
     {
@@ -53,7 +56,7 @@ export const PRIVACY_POLICY: LegalDocumentContent = {
       items: [
         "To provide, operate and maintain the Service, including syncing inventory, pricing, listings and orders across your connected channels.",
         "To create and manage your account, authenticate users and enforce role-based permissions.",
-        "To process subscription payments and send invoices and receipts.",
+        "To process storefront and point-of-sale payments through your Stripe account, and to invoice subscription fees.",
         "To respond to demo requests, support enquiries and other communications.",
         "To monitor, secure and improve the Service, diagnose faults and prevent fraud or abuse.",
         "To send service notices, such as security alerts, changes to these terms or downtime notifications.",
@@ -69,7 +72,7 @@ export const PRIVACY_POLICY: LegalDocumentContent = {
         "eBay: we access your eBay seller account to create and update listings, read orders and adjust quantities. Your use of eBay remains subject to eBay's own user agreement and privacy notice.",
         "Google: we access Google Merchant Center to manage product data and availability. Our use of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements.",
         "Meta (Facebook and Instagram): when you connect a Meta business account, we receive your business, catalogue and page identifiers and an access token, which we use only to create, update and remove products in your Meta commerce catalogue and to read related sync status. We do not access your personal profile, friends, messages or advertising data, and we do not share Meta platform data with third parties except as needed to provide the Service.",
-        "You can disconnect any channel at any time from the dashboard. When you do, we revoke or delete the stored access token for that channel.",
+        "You can disconnect Meta at any time under Settings, Integrations, Meta in the dashboard; we then revoke the access token with Meta and delete it along with the stored connection details. To disconnect eBay or Google, email us and we will delete the stored access token, or revoke access from your eBay or Google account settings.",
       ],
     },
     {
@@ -83,7 +86,7 @@ export const PRIVACY_POLICY: LegalDocumentContent = {
       id: "cookies",
       heading: "Cookies",
       paragraphs: [
-        "We use cookies and similar technologies that are necessary to keep you signed in, remember preferences and protect the Service. We do not use third-party advertising cookies on this website. You can block cookies in your browser, but parts of the dashboard may not work without them.",
+        "We use browser storage (such as local storage) and essential cookies to keep you signed in, remember preferences such as your theme, and protect the Service. We do not use analytics or third-party advertising cookies. If you clear or block browser storage you will be signed out, and parts of the dashboard may not work.",
       ],
     },
     {
@@ -120,11 +123,26 @@ export const PRIVACY_POLICY: LegalDocumentContent = {
       ],
     },
     {
-      id: "data-deletion",
-      heading: "Data deletion requests",
+      id: DATA_DELETION_ANCHOR,
+      heading: "Data deletion instructions",
       paragraphs: [
-        "To delete data received from a connected platform such as Meta, eBay or Google, disconnect the channel under Settings in the dashboard, which removes the stored access token and stops further syncing. To delete your entire account and associated data, email us from your account email address with the subject \"Data deletion request\". We will confirm once deletion is complete, usually within 30 days, except for records we must keep by law.",
-        "You can also remove AutoPartsPro's access from within each platform, for example under Business Integrations in your Meta settings.",
+        "To disconnect Meta (Facebook and Instagram) and delete the data we received from it:",
+      ],
+      items: [
+        "Sign in to the AutoPartsPro dashboard with a user who can manage integrations.",
+        "Go to Settings, then Integrations, then Meta.",
+        "Click Disconnect and confirm.",
+      ],
+      note: "We then ask Meta to revoke our access, immediately delete the stored Meta access token and connection details, and stop all syncing to Facebook and Instagram.",
+    },
+    {
+      id: "other-deletion-requests",
+      heading: "Other ways to delete your data",
+      paragraphs: [
+        "You can also remove AutoPartsPro from Meta directly, under Business Integrations in your Facebook settings or Integrations in Meta Business Suite. Our stored token stops working straight away; email us and we will delete the stored connection details within 30 days.",
+        `To disconnect eBay or Google, or to delete your entire account, email ${LEGAL_CONTACT_EMAIL} from your account email address with the subject "Data deletion request" and say what you want deleted. We may need to verify your identity, and will confirm by email once deletion is complete, within 30 days. You can also revoke access yourself from your eBay account settings or Google account permissions.`,
+        "Deleting your account removes your users, catalogue, images, orders, customer records and channel connections. Records we must keep by law, such as tax invoices, are kept only as long as the law requires, and backup copies are deleted as those backups expire.",
+        "Products already published to Meta, eBay or Google belong to your account on that platform and stay there until you remove them, for example in Meta Commerce Manager.",
       ],
     },
     {
@@ -175,7 +193,7 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
       id: "the-service",
       heading: "The Service",
       paragraphs: [
-        "AutoPartsPro lets you manage a parts catalogue, inventory, pricing and orders in one place and sync them with your storefront and third-party marketplaces such as eBay, Google Shopping and Meta. We may add, change or remove features over time, and will give reasonable notice of changes that materially reduce the Service.",
+        "AutoPartsPro lets you manage a parts catalogue, inventory, pricing and orders in one place and sync them with your storefront and third-party marketplaces such as eBay, Google Shopping and, once available on your account, Meta (Facebook and Instagram). We may add, change or remove features over time, and will give reasonable notice of changes that materially reduce the Service.",
       ],
     },
     {
@@ -184,6 +202,7 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
       paragraphs: [
         "When you connect a marketplace or platform, you authorise us to access it on your behalf. Your use of each platform remains subject to that platform's own terms and policies, and you are responsible for complying with them, including listing, pricing and product category rules.",
         "We do not control third-party platforms and are not responsible for their availability, API changes, fees, account suspensions or decisions about your listings. Sync timing depends on those platforms and may occasionally be delayed.",
+        `You can disconnect a platform at any time, as described in the data deletion instructions in our Privacy Policy at ${DATA_DELETION_URL}. Listings already published to a platform stay in your account there until you remove them.`,
       ],
     },
     {
@@ -191,7 +210,7 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
       heading: "Your content and data",
       paragraphs: [
         "You keep ownership of the product data, images, prices and other content you upload or import (\"Your Content\"). You grant us a non-exclusive, worldwide licence to host, copy, process, transmit and display Your Content only as needed to provide and support the Service.",
-        "You confirm you have the rights to Your Content and that it is accurate and lawful, including part descriptions, fitment information, pricing and compliance information for the goods you sell. We handle personal information as described in our Privacy Policy.",
+        "You confirm you have the rights to Your Content and that it is accurate and lawful, including part descriptions, fitment information, pricing and compliance information for the goods you sell. We handle personal information as described in our Privacy Policy, and you can ask us to delete it as described there.",
       ],
     },
     {
@@ -211,10 +230,10 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
       id: "fees-billing",
       heading: "Fees and billing",
       items: [
-        "Subscription fees are set out in your plan or order and are billed in advance through our payment provider, Stripe. Prices are in Australian dollars and include GST unless stated otherwise.",
+        "Subscription fees are set out in your plan or order and are invoiced in advance. Prices are in Australian dollars and include GST unless stated otherwise.",
         "Month-to-month plans renew automatically each billing period until cancelled. Custom plans follow the term agreed in writing.",
         "Fees are non-refundable except where required by law or stated otherwise in these Terms.",
-        "If a payment fails, we may suspend access after giving notice until the amount is paid.",
+        "If an invoice is unpaid by its due date, we may suspend access after giving notice until the amount is paid.",
         "Marketplace fees, payment processing fees and other third-party charges are your responsibility.",
         "We may change fees with at least 30 days' notice; changes take effect from your next billing period.",
       ],
@@ -237,9 +256,9 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
       id: "termination",
       heading: "Suspension and termination",
       items: [
-        "You may cancel at any time from your account settings or by emailing us; cancellation takes effect at the end of the current billing period.",
+        "You may cancel at any time by emailing us; cancellation takes effect at the end of the current billing period.",
         "We may suspend or terminate your access if you materially breach these Terms, fail to pay, or use the Service in a way that risks harm to us, other users or third parties.",
-        "After termination you can request an export of Your Content within 30 days, after which we may delete it in line with our Privacy Policy.",
+        "After termination you can request an export of Your Content within 30 days, after which we delete it in line with our Privacy Policy.",
       ],
     },
     {
@@ -279,7 +298,7 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
         "If any part of these Terms is unenforceable, the rest continues in effect.",
         "A failure to enforce a right is not a waiver of it.",
         "You may not assign your rights under these Terms without our consent. We may assign them as part of a sale or restructure of our business.",
-        "These Terms, together with any order form and our Privacy Policy, are the entire agreement between us about the Service.",
+        "These Terms, together with any order form, and our Privacy Policy, are the entire agreement between us about the Service.",
       ],
     },
     {
@@ -289,3 +308,4 @@ export const TERMS_OF_SERVICE: LegalDocumentContent = {
     },
   ],
 };
+
